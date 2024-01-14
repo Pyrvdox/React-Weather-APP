@@ -1,5 +1,6 @@
 import React from "react";
-import Panel from "./Panel";
+
+import PanelContainer from "../Containers/PanelContainer";
 import Result from "./Result";
 
 const Main = () => {
@@ -7,7 +8,7 @@ const Main = () => {
         <section id="app" className="container">
 
             {/*Moduł wyszukiwarki - domyślnie ukryty */}
-            <Panel />
+            <PanelContainer />
 
 
                {/*Moduł pogody*/}

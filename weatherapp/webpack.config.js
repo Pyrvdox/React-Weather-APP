@@ -41,4 +41,9 @@ module.exports = {
       process: "process/browser",
     }),
   ],
+  resolve: {
+    fallback: {
+      "process/browser": require.resolve("process/browser"),
+    },
+  },
 };

@@ -1,16 +1,18 @@
 import React from "react";
 import {createRoot} from "react-dom/client";
-import Header from "./Components/Header";
+import HeaderContainer from "./Containers/HeaderContainer";
 import Main from "./Components/Main";
+import {Provider} from "react-redux";
+import store from "./redux/store";
 
 const key = "b29e2d75-9512-4fcd-853d-22cc2220f5ea";
 
 const App = () => {
     return (
-        <>
-            <Header />
+        <Provider store={store}>
+            <HeaderContainer />
             <Main />
-        </>
+        </Provider>
 
 
     )
