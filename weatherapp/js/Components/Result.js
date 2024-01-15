@@ -50,27 +50,27 @@ const Result = ({cityWeather, closeCity}) => {
                         <ul className="weather__forecast">
                             <li>
                                 <span className="day">{setDayOfWeek(obj.forecast.forecastday[0].date)}</span> <img src={obj.forecast.forecastday[0].day.condition.icon}/>
-                                <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[0].day.avgtemp_c}</span>&deg;C</span>
+                                <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[0].day.avgtemp_c}&deg;C</span></span>
                             </li>
 
                             <li>
                                 <span className="day">{setDayOfWeek(obj.forecast.forecastday[1].date)}</span> <img src={obj.forecast.forecastday[1].day.condition.icon}/>
-                                <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[1].day.avgtemp_c}</span>&deg;C</span>
+                                <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[1].day.avgtemp_c}&deg;C</span></span>
                             </li>
 
                             <li>
                                 <span className="day">{setDayOfWeek(obj.forecast.forecastday[2].date)}</span> <img src={obj.forecast.forecastday[2].day.condition.icon}/>
-                                <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[2].day.avgtemp_c}</span>&deg;C</span>
+                                <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[2].day.avgtemp_c}&deg;C</span></span>
                             </li>
 
                             <li>
                                 <span className="day">{setDayOfWeek(obj.forecast.forecastday[3].date)}</span> <img src={obj.forecast.forecastday[3].day.condition.icon}/>
-                                <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[3].day.avgtemp_c}</span>&deg;C</span>
+                                <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[3].day.avgtemp_c}&deg;C</span></span>
                             </li>
 
                             <li>
                                 <span className="day">{setDayOfWeek(obj.forecast.forecastday[4].date)}</span> <img src={obj.forecast.forecastday[4].day.condition.icon}/>
-                                <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[4].day.avgtemp_c}</span>&deg;C</span>
+                                <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[4].day.avgtemp_c}&deg;C</span></span>
                             </li>
                         </ul>
                     </div>
