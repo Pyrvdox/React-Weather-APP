@@ -6,6 +6,7 @@ const Result = ({cityWeather}) => {
     const SingleCity = ({obj}) => {
         return (
             <>
+            {console.log('index miasta ze  state', obj.city_id)}
                 <div className="module module__weather" >
                     <button className="btn btn--icon btn--close"><i className="material-icons">close</i></button>
 
@@ -63,7 +64,7 @@ const Result = ({cityWeather}) => {
         )
     }
 
-    return cityWeather.map((obj, idx) => <SingleCity key={idx} obj={obj}/>)
+    return cityWeather.map((obj) => <SingleCity key={obj.city_id} obj={obj}/>)
 
 
 }

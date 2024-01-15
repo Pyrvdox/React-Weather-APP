@@ -12,11 +12,15 @@ const weatherReducer = (state=initialWeatherState, action) => {
 }
 
 const cityWeatherStateInit = []
+const cityIndex = (state) => {
+    const stateLenght = state.length +1
+    return stateLenght
+}
 
 const cityReducer = (state=cityWeatherStateInit, action) => {
     switch (action.type){
         case NEW_WEATHER:
-            return [...state, action.payload]
+            return [...state, {city_id: cityIndex(state), ...action.payload}]
         default:
             return state
     }
