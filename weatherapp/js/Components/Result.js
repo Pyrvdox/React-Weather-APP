@@ -301,9 +301,21 @@ const Result = ({cityWeather, closeCity}) => {
         return date.toLocaleString('default', { weekday: 'long'})
     }
 
-    const imageStyle = {
+    const timeOfDay = (time,cloud) => {
+        const date = new Date(time)
+        const dateHours =  date.getHours()
+        if(dateHours >= 22 || dateHours < 6) {
+            if(cloud >= 50){
+                return 'assets/icons/partly-cloudy-night.svg'
+            } return 'assets/icons/clear-night.svg'
+        }else{
+            if(cloud >= 50){
+                return 'assets/icons/partly-cloudy-day.svg'
+            } return 'assets/icons/clear-day.svg'
+        }
 
     }
+
 
     const SingleCity = ({obj}) => {
         return (
@@ -312,7 +324,7 @@ const Result = ({cityWeather, closeCity}) => {
                     <button className="btn btn--icon btn--close" onClick={()=> closeCity(obj.city_id)}><i className="material-icons">close</i></button>
 
                     <div className="weather">
-                        <div className="weather__icon"><img style={imageStyle} src={obj.current.condition.icon} /*"assets/icons/partly-cloudy-day.svg"*//></div>
+                        <div className="weather__icon"><img src={timeOfDay(obj.location.localtime, obj.current.cloud)} /*"assets/icons/partly-cloudy-day.svg"*//></div>
 
                         <div className="weather__info">
                             <div className="city">
@@ -331,27 +343,27 @@ const Result = ({cityWeather, closeCity}) => {
 
                         <ul className="weather__forecast">
                             <li>
-                                <span className="day">{setDayOfWeek(obj.forecast.forecastday[0].date)}</span> <img src="assets/icons/clear-day.svg"/>
+                                <span className="day">{setDayOfWeek(obj.forecast.forecastday[0].date)}</span> <img src={obj.forecast.forecastday[0].day.condition.icon}/>
                                 <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[0].day.avgtemp_c}</span>&deg;C</span>
                             </li>
 
                             <li>
-                                <span className="day">{setDayOfWeek(obj.forecast.forecastday[1].date)}</span> <img src="assets/icons/snow.svg"/>
+                                <span className="day">{setDayOfWeek(obj.forecast.forecastday[1].date)}</span> <img src={obj.forecast.forecastday[1].day.condition.icon}/>
                                 <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[1].day.avgtemp_c}</span>&deg;C</span>
                             </li>
 
                             <li>
-                                <span className="day">{setDayOfWeek(obj.forecast.forecastday[2].date)}</span> <img src="assets/icons/rain.svg"/>
+                                <span className="day">{setDayOfWeek(obj.forecast.forecastday[2].date)}</span> <img src={obj.forecast.forecastday[2].day.condition.icon}/>
                                 <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[2].day.avgtemp_c}</span>&deg;C</span>
                             </li>
 
                             <li>
-                                <span className="day">{setDayOfWeek(obj.forecast.forecastday[3].date)}</span> <img src="assets/icons/cloudy.svg"/>
+                                <span className="day">{setDayOfWeek(obj.forecast.forecastday[3].date)}</span> <img src={obj.forecast.forecastday[3].day.condition.icon}/>
                                 <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[3].day.avgtemp_c}</span>&deg;C</span>
                             </li>
 
                             <li>
-                                <span className="day">{setDayOfWeek(obj.forecast.forecastday[4].date)}</span> <img src="assets/icons/hail.svg"/>
+                                <span className="day">{setDayOfWeek(obj.forecast.forecastday[4].date)}</span> <img src={obj.forecast.forecastday[4].day.condition.icon}/>
                                 <span className="temperature"><span className="temperature__value">{obj.forecast.forecastday[4].day.avgtemp_c}</span>&deg;C</span>
                             </li>
                         </ul>
