@@ -1,10 +1,11 @@
 import React from "react";
 
+const Result = ({cityWeather}) => {
 
-const Result = () => {
+
     return (
         <>
-            <div className="module module__weather" hidden>
+            <div className="module module__weather" >
                 <button className="btn btn--icon btn--close"><i className="material-icons">close</i></button>
 
                 <div className="weather">

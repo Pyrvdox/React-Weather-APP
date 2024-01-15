@@ -1,7 +1,7 @@
 import React from "react";
 import Panel from "../Components/Panel";
 import {connect} from "react-redux";
-import {switchButton} from "../Actions/actionsWeather";
+import {newWeather, switchButton} from "../Actions/actionsWeather";
 
 const PanelContainer = (props) => {
     return (
@@ -19,7 +19,10 @@ const mapDispatch = (dispatch) => {
     return {
         switchWeather: () => {
             dispatch(switchButton())
-        }
+        },
+        addNewCity: (obj) => {
+            console.log('Dispaczowy console log:', obj)
+            dispatch(newWeather(obj))}
     }
 }
 
