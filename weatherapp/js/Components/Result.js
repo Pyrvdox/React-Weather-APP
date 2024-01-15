@@ -1,14 +1,14 @@
 import React from "react";
 
 
-const Result = ({cityWeather}) => {
+const Result = ({cityWeather, closeCity}) => {
 
     const SingleCity = ({obj}) => {
         return (
             <>
             {console.log('index miasta ze  state', obj.city_id)}
                 <div className="module module__weather" >
-                    <button className="btn btn--icon btn--close"><i className="material-icons">close</i></button>
+                    <button className="btn btn--icon btn--close" onClick={()=> closeCity(obj.city_id)}><i className="material-icons">close</i></button>
 
                     <div className="weather">
                         <div className="weather__icon"><img src="assets/icons/partly-cloudy-day.svg"/></div>
