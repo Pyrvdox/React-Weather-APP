@@ -5,10 +5,23 @@ import {useState} from "react";
 const Panel = ({switchButtonCity, switchWeather, addNewCity}) => {
 
     const [city, setCity] = useState("")
+    const polishCharacters = "ĄąĆćĘęŁłŃńÓóŚśŻżŹź"
 
     const formHandler = (e) => {
         e.preventDefault()
-        getData(city).then((r) => addNewCity(r)).then(() => setCity(''))
+        let err = false
+        for (let char of city){
+            if(polishCharacters.includes(char)){
+                err = true;
+                break;
+            }
+        }
+        if (err === true) {
+            alert('Nazwa miasta nie może zawierać polskich znaków. Zobacz: źle("Wrocław"), dobrze("Wroclaw")');
+            setCity('');
+        }else{
+            getData(city).then((r) => addNewCity(r)).then(() => setCity(''))
+        }
     }
 
     const inputHandler = (e) => {
