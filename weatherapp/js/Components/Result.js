@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 
-const Result = ({cityWeather, closeCity}) => {
+const Result = ({cityWeather, closeCity, editCityName}) => {
     const setDayOfWeek = (obj) => {
         const date = new Date(obj)
-        return date.toLocaleString('default', { weekday: 'long'})
+        return date.toLocaleString('pl-PL', { weekday: 'long'})
     }
 
     const timeOfDay = (time,cloud) => {
@@ -23,7 +23,27 @@ const Result = ({cityWeather, closeCity}) => {
     }
 
 
-    const SingleCity = ({obj}) => {
+    const SingleCity = ({obj, editCityName}) => {
+        const [name, setName] = useState('')
+        const [edit, setEdit] = useState(false)
+
+        const editCity = ({target:{value}}) => {
+            setName(value)
+        }
+        const switchEdit = () => {
+            setEdit(!edit)
+        }
+        const submithandler = (e) => {
+            e.preventDefault()
+            if (name === ''){
+                alert('Pole nazwa miasta nie może być pusta, nadaj mu nową nazwę!')
+            }else{
+                editCityName(obj.city_id, name);
+                setName('');
+                setEdit(false);
+            }
+        }
+
         return (
             <>
                 <div className="module module__weather" >
@@ -34,8 +54,14 @@ const Result = ({cityWeather, closeCity}) => {
 
                         <div className="weather__info">
                             <div className="city">
-                                <span className="city__name">{obj.location.name}</span> <span className="btn btn--icon"><i
-                                className="material-icons">edit</i></span>
+                                <div className={edit ? "edif-form" : "edit-form hidden"} hidden={!edit}>
+                                    <form onSubmit={submithandler} >
+                                        <input type="text" name="name" value={name} onChange={editCity}/>
+                                        <input type="submit" value="Zapisz" />
+                                    </form>
+                                </div>
+                                <span className="city__name">{obj.location.name}</span><span className="btn btn--icon" onClick={switchEdit}><i
+                                className="material-icons" >edit</i></span>
                             </div>
                             <div className="temperature"><span className="temperature__value">{obj.current.temp_c}</span>&deg;C</div>
                         </div>
@@ -83,7 +109,7 @@ const Result = ({cityWeather, closeCity}) => {
         )
     }
 
-    return cityWeather.map((obj) => <SingleCity key={obj.city_id} obj={obj}/>)
+    return cityWeather.map((obj) => <SingleCity key={obj.city_id} obj={obj} editCityName={editCityName}/>)
 
 
 }

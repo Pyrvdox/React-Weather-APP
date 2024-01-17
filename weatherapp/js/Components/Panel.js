@@ -13,7 +13,6 @@ const Panel = ({switchButtonCity, switchWeather, addNewCity}) => {
 
     const inputHandler = (e) => {
         setCity(e.target.value)
-        console.log(city)
     }
 
     return (

@@ -5,7 +5,6 @@ const key = "e28659e645184311b2f182600241501";
 const getData = async (city) => {
     try {
         const fetching = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${city === "" ? 'auto:ip' : city}&days=5`)
-        console.log(key,"ze to jest city? :", city)
         const data = await fetching.json()
         return data
     }catch (error) {

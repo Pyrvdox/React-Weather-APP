@@ -10,7 +10,6 @@ const PanelContainer = (props) => {
 }
 
 const mapState = (state) => {
-    console.log('state for button add city',state.weatherReducer.switch)
     return {
         switchButtonCity: state.weatherReducer.switch
     }
@@ -21,7 +20,6 @@ const mapDispatch = (dispatch) => {
             dispatch(switchButton())
         },
         addNewCity: (obj) => {
-            console.log('Dispaczowy console log:', obj)
             dispatch(newWeather(obj))}
     }
 }
