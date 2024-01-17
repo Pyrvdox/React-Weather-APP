@@ -13,8 +13,11 @@ const weatherReducer = (state=initialWeatherState, action) => {
 
 const cityWeatherStateInit = []
 const cityIndex = (state) => {
-    const stateLenght = state.length
-    return stateLenght
+    if (state.length === 0){
+        return 0
+    }
+    return state.reduce((acc, currrent) => acc < currrent.city_id ? currrent.city_id : acc, 0) + 1
+
 }
 
 const cityReducer = (state=cityWeatherStateInit, action) => {
@@ -22,7 +25,6 @@ const cityReducer = (state=cityWeatherStateInit, action) => {
         case NEW_WEATHER:
             return [...state, {city_id: cityIndex(state), ...action.payload}]
         case REMOVE_CITY:
-
             const newState = state.filter(obj => {
                 if(obj.city_id !== action.payload){
                     return obj
